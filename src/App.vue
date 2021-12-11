@@ -1,7 +1,5 @@
 <template>
-  <div id="app">
-    <hello-heading />
-  </div>
+  <hello-heading />
 </template>
 
 <script>
@@ -9,7 +7,9 @@ import HelloHeading from './components/HelloHeading';
 
 export default {
   name: 'app-main',
-  components: { HelloHeading }
+  components: {
+    HelloHeading,
+  }
 };
 </script>
 
