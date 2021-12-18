@@ -33,8 +33,9 @@ export default {
 <style scoped lang="scss">
 .login {
   background-color: var(--color-white);
-  width: 400px;
-  height: 400px;
+  border: 1px solid var(--color-primary-light);
+  border-radius: 5px;
+  box-shadow: 0 0 8px var(--color-primary-light);
 
   &-form {
     padding: 2rem;
