@@ -1,3 +1,19 @@
-$color-background: #eeeeee;
-$color-primary: #4c4d4e;
-$color-accent: #df1f3d;
+$colors: (
+  "primary": #5e1fde,
+  "secondary": #efe8fc,
+  "info-light": #f6f6bc,
+  "info-dark": #ffb800,
+  "success-light": #dcf9d2,
+  "success-dark": #2f8712,
+  "error-light": #f9d2d2,
+  "error-dark": #e01f1f,
+  "disabled-light": #c7c7c7,
+  "disabled-dark": #7b738c,
+  "white": #ffffff
+);
+
+:root {
+  @each $name, $value in $colors {
+    --color-#{$name}: #{$value};
+  }
+}
