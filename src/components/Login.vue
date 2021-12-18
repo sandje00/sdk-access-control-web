@@ -13,16 +13,16 @@
         placeholder="Password"
         class="login-form-field"
       />
-      <button
-        color="primary"
-        depressed>
-        Log In
-      </button>
+      <base-button
+        text="Log In"
+        class="login-form-button align-self-center"
+      />
     </form>
   </div>
 </template>
 
 <script>
+import BaseButton from './base/BaseButton.vue';
 import BaseInput from './base/BaseInput';
 
 export default {
@@ -31,7 +31,7 @@ export default {
     email: '',
     password: ''
   }),
-  components: { BaseInput }
+  components: { BaseInput, BaseButton }
 }
 </script>
 
@@ -46,6 +46,10 @@ export default {
     padding: 2rem;
 
     &-field {
+      margin-top: 1rem;
+    }
+
+    &-button {
       margin-top: 1rem;
     }
   }
