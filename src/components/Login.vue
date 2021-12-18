@@ -1,16 +1,18 @@
 <template>
   <div class="login position-center flex justify-center align-center">
     <form class="login-form flex-v justify-start align-stretch">
-      <input
+      <base-input
         v-model="email"
         type="text"
-        label="E-mail"
-      >
-      <input
+        placeholder="E-mail"
+        class="login-form-field"
+      />
+      <base-input
         v-model="password"
         type="password"
-        label="Password"
-      >
+        placeholder="Password"
+        class="login-form-field"
+      />
       <button
         color="primary"
         depressed>
@@ -21,12 +23,15 @@
 </template>
 
 <script>
+import BaseInput from './base/BaseInput';
+
 export default {
   name: 'login-page',
   data: () => ({
     email: '',
     password: ''
-  })
+  }),
+  components: { BaseInput }
 }
 </script>
 
@@ -39,6 +44,10 @@ export default {
 
   &-form {
     padding: 2rem;
+
+    &-field {
+      margin-top: 1rem;
+    }
   }
 }
 </style>
