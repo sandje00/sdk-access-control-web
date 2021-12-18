@@ -20,9 +20,6 @@ export default {
 .input {
   font-size: inherit;
   background: none;
-  border: 1px solid var(--color-gray-dark);
-  border-radius: 5px;
-  padding: 0.5rem 1rem;
 
   &::placeholder {
     color: var(--color-gray-light);

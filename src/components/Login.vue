@@ -2,17 +2,15 @@
   <div class="login position-center flex-v justify-center align-center">
     <app-logo class="logo" />
     <form class="login-form flex-v justify-start align-stretch">
-      <base-input
+      <base-field
         v-model="email"
         type="text"
         placeholder="E-mail"
-        class="login-form-field"
       />
-      <base-input
+      <base-field
         v-model="password"
         type="password"
         placeholder="Password"
-        class="login-form-field"
       />
       <base-button
         text="Log In"
@@ -25,7 +23,7 @@
 <script>
 import AppLogo from './AppLogo';
 import BaseButton from './base/BaseButton.vue';
-import BaseInput from './base/BaseInput';
+import BaseField from './base/BaseField';
 
 export default {
   name: 'login-page',
@@ -35,13 +33,13 @@ export default {
   }),
   components: {
     AppLogo,
-    BaseInput,
+    BaseField,
     BaseButton
   }
 }
 </script>
 
-<style scoped lang="scss">
+<style lang="scss" scoped>
 .login {
   background-color: var(--color-white);
   border: 1px solid var(--color-primary-light);
@@ -54,10 +52,6 @@ export default {
 
   &-form {
     padding: 2rem;
-
-    &-field {
-      margin-top: 1rem;
-    }
 
     &-button {
       margin-top: 1rem;
