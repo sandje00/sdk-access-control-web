@@ -50,7 +50,6 @@ export default {
     width: 100%;
     max-width: 20rem;
     align-items: stretch;
-    min-height: var(--spc-m);
     margin: 0 auto;
     background: var(--color-white);
     border-radius: 5px;

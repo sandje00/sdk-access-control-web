@@ -1,5 +1,5 @@
 <template>
-  <button v-on="$listeners" class="button py-s px-xl">
+  <button v-on="$listeners" class="button">
     <span class="text">{{ text }}</span>
   </button>
 </template>
