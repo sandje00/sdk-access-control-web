@@ -1,5 +1,8 @@
 <template>
-  <div class="app-logo flex-v align-center">
+  <div
+    :class="{ light, large }"
+    class="app-logo flex-v justify-center align-center"
+  >
     <span>SDK</span>
     <span>Access Control</span>
   </div>
@@ -7,7 +10,11 @@
 
 <script>
 export default {
-  name: 'app-logo'
+  name: 'app-logo',
+  props: {
+    light: { type: Boolean, default: false },
+    large: { type: Boolean, default: false }
+  }
 }
 </script>
 
@@ -22,6 +29,22 @@ export default {
     font-size: 1rem;
     font-style: italic;
     color: var(--color-gray-dark);
+  }
+
+  &.light {
+    color: var(--color-white);
+  }
+
+  &.light::after {
+    color: var(--color-gray-light);
+  }
+
+  &.large {
+    font-size: 3rem;
+  }
+
+  &.large::after {
+    font-size: 1.5rem;
   }
 }
 </style>
