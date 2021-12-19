@@ -15,9 +15,8 @@ export default {
 
 <style lang="scss" scoped>
 .button {
-  padding: 0.5rem 1rem;
+  padding: 0.7rem 2rem;
   font-size: 1rem;
-  font-weight: bold;
   background: none;
   background-color: var(--color-primary);
   border: none;
@@ -26,6 +25,10 @@ export default {
 
   .text {
     color: var(--color-white);
+  }
+
+  &:hover {
+    background-color: var(--color-primary-light);
   }
 
   &:focus {
