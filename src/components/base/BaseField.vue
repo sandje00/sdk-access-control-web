@@ -1,6 +1,7 @@
 <template>
   <validation-provider
     v-slot="{ errors }"
+    mode="eager"
     :name="name"
     :rules="rules"
   >
