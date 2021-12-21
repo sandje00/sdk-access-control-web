@@ -2,7 +2,7 @@
   <div class="login flex-v justify-center align-center">
     <div class="login-container flex-v justify-center align-center align-items-stretch">
       <app-logo class="logo" />
-      <base-form class="login-form">
+      <base-form @submit="login" class="login-form">
         <base-field
           v-model.trim="email"
           name="E-mail"
@@ -38,6 +38,9 @@ export default {
     email: '',
     password: ''
   }),
+  methods: {
+    login() { console.log('Login') }
+  },
   components: {
     AppLogo,
     BaseButton,
