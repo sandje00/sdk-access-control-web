@@ -1,20 +1,26 @@
 <template>
-  <div>
-    <slot><base-input v-on="$listeners" v-bind="$attrs" :class="{ error }" class="input" /></slot>
-    <span class="error-message">{{ error }}</span>
-  </div>
+  <validation-provider
+    v-slot="{ errors }"
+    :name="name"
+    :rules="rules"
+  >
+    <slot><base-input v-on="$listeners" v-bind="$attrs" :class="{ error: errors[0] }" class="input" /></slot>
+    <span class="error-message">{{ errors[0] }}</span>
+  </validation-provider>
 </template>
 
 <script>
 import BaseInput from './BaseInput';
+import { ValidationProvider } from 'vee-validate';
 
 export default {
   name: 'base-field',
   inheritAttrs: false,
   props: {
-    error: { type: String, default: '' }
+    name: { type: String, required: true },
+    rules: { type: [String, Object], required: true }
   },
-  components: { BaseInput }
+  components: { BaseInput, ValidationProvider }
 }
 </script>
 
