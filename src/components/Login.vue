@@ -2,14 +2,18 @@
   <div class="login flex-v justify-center align-center">
     <div class="login-container flex-v justify-center align-center align-items-stretch">
       <app-logo class="logo" />
-      <form class="login-form flex-v justify-start align-stretch">
+      <base-form @submit="login" class="login-form">
         <base-field
-          v-model="email"
+          v-model.trim="email"
+          name="E-mail"
+          :rules="{ required: true, email: true }"
           type="text"
           placeholder="E-mail"
         />
         <base-field
           v-model="password"
+          name="Password"
+          :rules="{ required: true }"
           type="password"
           placeholder="Password"
         />
@@ -17,15 +21,16 @@
           text="Log In"
           class="login-form-button align-self-center"
         />
-      </form>
+      </base-form>
   </div>
   </div>
 </template>
 
 <script>
 import AppLogo from './AppLogo';
-import BaseButton from './base/BaseButton.vue';
+import BaseButton from './base/BaseButton';
 import BaseField from './base/BaseField';
+import BaseForm from './base/BaseForm';
 
 export default {
   name: 'login-page',
@@ -33,10 +38,14 @@ export default {
     email: '',
     password: ''
   }),
+  methods: {
+    login() { console.log('Login') }
+  },
   components: {
     AppLogo,
+    BaseButton,
     BaseField,
-    BaseButton
+    BaseForm
   }
 }
 </script>
