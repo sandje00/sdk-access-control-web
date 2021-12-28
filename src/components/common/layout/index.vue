@@ -1,12 +1,22 @@
 <template>
-  <div class="main flex-v justify-center align-center">
+  <div
+    :class="{ 'flex-v justify-center align-center': centeredContent }"
+    class="main">
+    <app-header v-if="loggedIn"></app-header>
     <slot></slot>
   </div>
 </template>
 
 <script>
+import AppHeader from './AppHeader';
+
 export default {
-  name: 'app-layout'
+  name: 'app-layout',
+  props: {
+    centeredContent: { type: Boolean, default: false },
+    loggedIn: { type: Boolean, required: true }
+  },
+  components: { AppHeader }
 }
 </script>
 
