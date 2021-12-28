@@ -1,7 +1,7 @@
 <template>
   <div
-    :class="{ light, large }"
-    class="app-logo flex-v justify-center align-center"
+    :class="[{ caption, light, large, small, vertical }, vertical ? 'flex-h' : 'flex-v' ]"
+    class="app-logo justify-center align-center"
   >
     <span>SDK</span>
     <span>Access Control</span>
@@ -12,8 +12,11 @@
 export default {
   name: 'app-logo',
   props: {
+    caption: { type: Boolean, default: true },
     light: { type: Boolean, default: false },
-    large: { type: Boolean, default: false }
+    large: { type: Boolean, default: false },
+    small: { type: Boolean, default: false },
+    vertical: { type: Boolean, default: false }
   }
 }
 </script>
@@ -23,7 +26,7 @@ export default {
   color: var(--color-primary);
   font-size: 2rem;
 
-  &::after {
+  &.caption::after {
     content: 'admin dashboard';
     text-transform: uppercase;
     font-size: 1rem;
@@ -43,8 +46,22 @@ export default {
     font-size: 3rem;
   }
 
-  &.large::after {
+  &.small {
     font-size: 1.5rem;
+  }
+
+  &.vertical {
+    span:last-child {
+      margin-left: 0.5rem;
+    }
+  }
+
+  &.large.caption::after {
+    font-size: 1.5rem;
+  }
+
+  &.small.caption::after {
+    font-size: 0.7rem;
   }
 }
 </style>
