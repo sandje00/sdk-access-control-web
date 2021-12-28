@@ -2,15 +2,17 @@
   <header class="app-header flex-h justify-space-between">
     <app-logo class="logo" :caption="false" light small vertical>
     </app-logo>
+    <app-navigation></app-navigation>
   </header>
 </template>
 
 <script>
 import AppLogo from '../AppLogo';
+import AppNavigation from './Navigation';
 
 export default {
   name: 'app-header',
-  components: { AppLogo }
+  components: { AppLogo, AppNavigation }
 }
 </script>
 
