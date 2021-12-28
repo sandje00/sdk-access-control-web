@@ -10,8 +10,8 @@
 </template>
 
 <script>
-import AppLogo from './AppLogo';
-import BaseButton from './base/BaseButton';
+import AppLogo from './common/AppLogo';
+import BaseButton from './common/BaseButton';
 
 export default {
   name: 'home-page',

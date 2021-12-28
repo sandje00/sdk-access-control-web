@@ -27,10 +27,10 @@
 </template>
 
 <script>
-import AppLogo from './AppLogo';
-import BaseButton from './base/BaseButton';
-import BaseField from './base/BaseField';
-import BaseForm from './base/BaseForm';
+import AppLogo from './common/AppLogo';
+import BaseButton from './common/BaseButton';
+import BaseField from './common/BaseField';
+import BaseForm from './common/BaseForm';
 
 export default {
   name: 'login-page',
