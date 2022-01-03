@@ -1,6 +1,6 @@
 <template>
   <div
-    :class="[{ caption, light, large, small, vertical }, vertical ? 'flex-h' : 'flex-v' ]"
+    :class="[{ caption, large, light, short, small, vertical }, vertical ? 'flex-h' : 'flex-v' ]"
     class="app-logo justify-center align-center"
   >
     <span>SDK</span>
@@ -13,8 +13,9 @@ export default {
   name: 'app-logo',
   props: {
     caption: { type: Boolean, default: true },
-    light: { type: Boolean, default: false },
     large: { type: Boolean, default: false },
+    light: { type: Boolean, default: false },
+    short: { type: Boolean, default: false },
     small: { type: Boolean, default: false },
     vertical: { type: Boolean, default: false }
   }
@@ -62,6 +63,12 @@ export default {
 
   &.small.caption::after {
     font-size: 0.7rem;
+  }
+
+  &.vertical.short {
+    span:last-child {
+      display: none;
+    }
   }
 }
 </style>
