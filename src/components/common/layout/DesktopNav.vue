@@ -1,9 +1,9 @@
 <template>
   <nav class="navigation flex-h justify-center align-center">
-    <router-link :to="{ name: 'home' }" class="navigation-link">
+    <router-link :to="{ name: 'profile' }" class="navigation-link">
       My Profile
     </router-link>
-    <router-link :to="{ name: 'home' }" class="navigation-link">
+    <router-link :to="{ name: 'settings' }" class="navigation-link">
       Settings
     </router-link>
     <router-link :to="{ name: 'home' }" class="navigation-link">

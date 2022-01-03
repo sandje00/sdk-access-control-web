@@ -1,10 +1,10 @@
 <template>
   <nav class="navigation flex-h justify-center align-center">
-    <router-link :to="{ name: 'home' }" class="navigation-link">
+    <router-link :to="{ name: 'profile' }" class="navigation-link">
       <icon-user icon-name="User" icon-color="#ffffff">
       </icon-user>
     </router-link>
-    <router-link :to="{ name: 'home' }" class="navigation-link">
+    <router-link :to="{ name: 'settings' }" class="navigation-link">
       <icon-settings icon-name="Settings" icon-color="#ffffff">
       </icon-settings>
     </router-link>
