@@ -4,10 +4,12 @@
     class="main">
     <app-header v-if="loggedIn"></app-header>
     <slot></slot>
+    <app-footer></app-footer>
   </div>
 </template>
 
 <script>
+import AppFooter from './Footer';
 import AppHeader from './Header';
 
 export default {
@@ -16,7 +18,7 @@ export default {
     centeredContent: { type: Boolean, default: false },
     loggedIn: { type: Boolean, required: true }
   },
-  components: { AppHeader }
+  components: { AppFooter, AppHeader }
 }
 </script>
 
@@ -24,5 +26,6 @@ export default {
 .main {
   height: 100vh;
   background: var(--color-secondary);
+  position: relative;
 }
 </style>
