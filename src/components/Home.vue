@@ -1,39 +1,36 @@
 <template>
-  <div class="main flex-v justify-center align-center">
+  <app-layout :logged-in="false" centered-content>
     <app-logo large />
-    <base-button
-      @click="getStarted"
-      text="Get started"
-      class="btn"
-    />
-  </div>
+      <base-button
+        @click="getStarted"
+        text="Get started"
+        class="btn"
+      />
+  </app-layout>
 </template>
 
 <script>
-import AppLogo from './AppLogo';
-import BaseButton from './base/BaseButton';
+import AppLayout from './common/layout';
+import AppLogo from './common/AppLogo';
+import BaseButton from './common/BaseButton';
 
 export default {
   name: 'home-page',
-  components: {
-    AppLogo,
-    BaseButton
-  },
   methods: {
     getStarted() {
       this.$router.push({ name: 'login' });
     }
+  },
+  components: {
+    AppLayout,
+    AppLogo,
+    BaseButton
   }
 }
 </script>
 
 <style lang="scss" scoped>
-.main {
-  height: 100vh;
-  background: var(--color-secondary);
-
-  .btn {
-    margin-top: 2rem;
-  }
+.btn {
+  margin-top: 2rem;
 }
 </style>

@@ -1,6 +1,6 @@
 <template>
-  <div class="login flex-v justify-center align-center">
-    <div class="login-container flex-v justify-center align-center align-items-stretch">
+  <app-layout :logged-in="false" centered-content>
+    <div class="login flex-v justify-center align-center align-items-stretch">
       <app-logo class="logo" />
       <base-form @submit="login" class="login-form">
         <base-field
@@ -22,15 +22,16 @@
           class="login-form-button align-self-center"
         />
       </base-form>
-  </div>
-  </div>
+    </div>
+  </app-layout>
 </template>
 
 <script>
-import AppLogo from './AppLogo';
-import BaseButton from './base/BaseButton';
-import BaseField from './base/BaseField';
-import BaseForm from './base/BaseForm';
+import AppLayout from './common/layout';
+import AppLogo from './common/AppLogo';
+import BaseButton from './common/BaseButton';
+import BaseField from './common/BaseField';
+import BaseForm from './common/BaseForm';
 
 export default {
   name: 'login-page',
@@ -39,9 +40,10 @@ export default {
     password: ''
   }),
   methods: {
-    login() { console.log('Login') }
+    login() { this.$router.push({ name: 'dashboard' }) }
   },
   components: {
+    AppLayout,
     AppLogo,
     BaseButton,
     BaseField,
@@ -52,18 +54,13 @@ export default {
 
 <style lang="scss" scoped>
 .login {
-  height: 100vh;
-  background: var(--color-secondary);
-
-  &-container {
-    width: 100%;
-    max-width: 20rem;
-    align-items: stretch;
-    margin: 0 auto;
-    background: var(--color-white);
-    border-radius: 5px;
-    box-shadow: 0 0 8px var(--color-primary-light);
-  }
+  width: 100%;
+  max-width: 20rem;
+  align-items: stretch;
+  margin: 0 auto;
+  background: var(--color-white);
+  border-radius: 5px;
+  box-shadow: 0 0 8px var(--color-primary-light);
 
   .logo {
     margin-top: 0.5rem;
