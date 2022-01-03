@@ -2,17 +2,24 @@
   <header class="app-header flex-h justify-space-between">
     <app-logo class="logo" :caption="false" light small vertical>
     </app-logo>
-    <app-navigation></app-navigation>
+    <mobile-nav v-if="isMobile"></mobile-nav>
+    <desktop-nav v-else></desktop-nav>
   </header>
 </template>
 
 <script>
 import AppLogo from '../AppLogo';
-import AppNavigation from './Navigation';
+import DesktopNav from './DesktopNav';
+import MobileNav from './MobileNav';
 
 export default {
   name: 'app-header',
-  components: { AppLogo, AppNavigation }
+  computed: {
+    isMobile() {
+      return window.innerWidth <= 600;
+    }
+  },
+  components: { AppLogo, DesktopNav, MobileNav }
 }
 </script>
 

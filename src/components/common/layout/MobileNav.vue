@@ -21,7 +21,7 @@ import IconSettings from '../icons/IconSettings';
 import IconUser from '../icons/IconUser';
 
 export default {
-  name: 'app-navigation',
+  name: 'mobile-navigation',
   components: {
     IconLogout,
     IconSettings,
@@ -35,11 +35,6 @@ export default {
   &-link {
     padding: 1rem;
     cursor: pointer;
-
-    &:hover {
-      transform: scale(1.2);
-      transition: all 0.2s;
-    }
   }
 }
 </style>
