@@ -1,11 +1,11 @@
 <template>
   <app-layout :logged-in="false" centered-content>
-    <app-logo large />
+    <app-logo large></app-logo>
       <base-button
         @click="getStarted"
         text="Get started"
         class="btn"
-      />
+      ></base-button>
   </app-layout>
 </template>
 

@@ -1,7 +1,7 @@
 <template>
   <app-layout :logged-in="false" centered-content>
     <div class="login flex-v justify-center align-center align-items-stretch">
-      <app-logo class="logo" />
+      <app-logo class="logo"></app-logo>
       <base-form @submit="login" class="login-form">
         <base-field
           v-model.trim="email"
@@ -9,18 +9,18 @@
           :rules="{ required: true, email: true }"
           type="text"
           placeholder="E-mail"
-        />
+        ></base-field>
         <base-field
           v-model="password"
           name="Password"
           :rules="{ required: true }"
           type="password"
           placeholder="Password"
-        />
+        ></base-field>
         <base-button
           text="Log In"
           class="login-form-button align-self-center"
-        />
+        ></base-button>
       </base-form>
     </div>
   </app-layout>
