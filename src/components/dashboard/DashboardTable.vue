@@ -2,24 +2,22 @@
   <h2 v-if="!records.length" class="message">
     There are no records to show.
   </h2>
-  <div v-else>
-    <table class="table">
-      <tr class="table-header">
-        <th
-          v-for="{label, id} in headerCols"
-          :key="id"
-        >
-          {{ label }}
-        </th>
-      </tr>
-      <dashboard-table-record
-        v-for="record in records"
-        :key="record.id"
-        v-bind="record"
+  <table v-else class="table">
+    <tr class="table-header">
+      <th
+        v-for="{label, id} in headerCols"
+        :key="id"
       >
-      </dashboard-table-record>
-    </table>
-  </div>
+        {{ label }}
+      </th>
+    </tr>
+    <dashboard-table-record
+      v-for="record in records"
+      :key="record.id"
+      v-bind="record"
+    >
+    </dashboard-table-record>
+  </table>
 </template>
 
 <script>
