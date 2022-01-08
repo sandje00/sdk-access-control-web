@@ -45,5 +45,32 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.table {
+  width: 90%;
+  text-align: left;
+  border-collapse: collapse;
 
+  tr {
+    height: 3.5rem;
+  }
+
+  th {
+    cursor: pointer;
+  }
+
+  tr th:first-child {
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+  }
+
+  tr th:last-child{
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+  }
+
+  &-header {
+    color: var(--color-white);
+    background-color: var(--color-primary);
+  }
+}
 </style>

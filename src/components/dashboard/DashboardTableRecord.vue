@@ -28,5 +28,18 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.record {
+  border-bottom: 2px solid var(--color-secondary);
+  background-color: var(--color-white);
+}
 
+tr td:first-child {
+  border-top-left-radius: 5px;
+  border-bottom-left-radius: 5px;
+}
+
+tr td:last-child {
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
+}
 </style>
