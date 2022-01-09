@@ -1,7 +1,7 @@
 <template>
   <div class="search-box flex-h align-center">
     <icon-search icon-name="Search" icon-color="#acacac"></icon-search>
-    <base-input v-on="$listeners" v-bind="$attrs"></base-input>
+    <base-input v-on="$listeners" v-bind="$attrs" class="input"></base-input>
   </div>
 </template>
 
@@ -21,7 +21,10 @@ export default {
   height: 2rem;
   padding: 0.5rem;
   background-color: var(--color-white);
-  border: none;
   border-radius: 10px;
+
+  .input {
+    border: none;
+  }
 }
 </style>
