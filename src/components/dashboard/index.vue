@@ -47,6 +47,8 @@ export default {
 <style lang="scss" scoped>
 .dashboard {
   margin-top: 8vh;
+  padding: 0 8vw;
+  max-width: 90vw;
 
   &-control {
     padding: 2rem 0;

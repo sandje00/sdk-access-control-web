@@ -44,7 +44,7 @@ export default {
 
 <style lang="scss" scoped>
 .table {
-  width: 90%;
+  width: 100%;
   text-align: left;
   border-collapse: collapse;
 
@@ -59,6 +59,7 @@ export default {
   tr th:first-child {
     border-top-left-radius: 5px;
     border-bottom-left-radius: 5px;
+    padding-left: 1rem;
   }
 
   tr th:last-child{
