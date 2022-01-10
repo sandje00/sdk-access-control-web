@@ -57,6 +57,9 @@ export default {
   margin-top: 8vh;
   padding: 0 8vw;
   max-width: 90vw;
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%);
 
   &-control {
     padding: 2rem 0;
