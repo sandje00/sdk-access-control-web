@@ -46,6 +46,11 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.message {
+  text-align: center;
+  color: var(--color-gray-light);
+}
+
 .container {
   overflow-x: auto;
 }
