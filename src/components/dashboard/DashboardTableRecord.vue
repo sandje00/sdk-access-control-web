@@ -6,10 +6,20 @@
     <td>{{ role }}</td>
     <td>{{ start }}</td>
     <td>{{ end }}</td>
+    <td>
+      <icon-info
+        icon-name="Info"
+        icon-color="#5e1fde"
+        class="record-icon"
+      >
+      </icon-info>
+    </td>
   </tr>
 </template>
 
 <script>
+import IconInfo from '../common/icons/IconInfo';
+
 export default {
   name: 'dashboard-table-record',
   props: {
@@ -23,7 +33,8 @@ export default {
     },
     start: { type: String, required: true },
     end: { type: String, required: true }
-  }
+  },
+  components: { IconInfo }
 }
 </script>
 
@@ -31,6 +42,10 @@ export default {
 .record {
   border-bottom: 2px solid var(--color-secondary);
   background-color: var(--color-white);
+
+  &-icon {
+    cursor: pointer;
+  }
 }
 
 tr td:first-child {

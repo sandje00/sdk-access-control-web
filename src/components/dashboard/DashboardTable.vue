@@ -35,7 +35,8 @@ export default {
       { label: 'Last name', id: 'last_name' },
       { label: 'Role', id: 'role' },
       { label: 'Start time', id: 'start_time' },
-      { label: 'End time', id: 'end_time' }
+      { label: 'End time', id: 'end_time' },
+      { label: '', id: 'info' }
     ]
   }),
   components: { DashboardTableRecord }
