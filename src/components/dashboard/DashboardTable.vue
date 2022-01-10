@@ -32,13 +32,13 @@ export default {
   },
   data: () => ({
     headerCols: [
+      { label: '', id: 'info' },
       { label: 'ID', id: 'id' },
       { label: 'First name', id: 'first_name' },
       { label: 'Last name', id: 'last_name' },
       { label: 'Role', id: 'role' },
       { label: 'Start time', id: 'start_time' },
-      { label: 'End time', id: 'end_time' },
-      { label: '', id: 'info' }
+      { label: 'End time', id: 'end_time' }
     ]
   }),
   components: { DashboardTableRecord }
@@ -72,11 +72,34 @@ export default {
     border-top-left-radius: 5px;
     border-bottom-left-radius: 5px;
     padding-left: 1rem;
+    cursor: default;
+    width: 5%;
+  }
+
+  tr th:nth-child(2) {
+    width: 5%;
+  }
+
+  tr th:nth-child(3) {
+    width: 15%;
+  }
+
+  tr th:nth-child(4) {
+    width: 15%;
+  }
+
+  tr th:nth-child(5) {
+    width: 10%;
+  }
+
+  tr th:nth-child(6) {
+    width: 15%;
   }
 
   tr th:last-child{
     border-top-right-radius: 5px;
     border-bottom-right-radius: 5px;
+    width: 15%;
   }
 
   &-header {

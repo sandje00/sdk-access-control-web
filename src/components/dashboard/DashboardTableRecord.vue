@@ -1,11 +1,5 @@
 <template>
   <tr class="record">
-    <td>{{ id }}</td>
-    <td>{{ firstName }}</td>
-    <td>{{ lastName }}</td>
-    <td>{{ role }}</td>
-    <td>{{ start }}</td>
-    <td>{{ end }}</td>
     <td>
       <icon-info
         icon-name="Info"
@@ -14,6 +8,12 @@
       >
       </icon-info>
     </td>
+    <td>{{ id }}</td>
+    <td>{{ firstName }}</td>
+    <td>{{ lastName }}</td>
+    <td>{{ role }}</td>
+    <td>{{ start }}</td>
+    <td>{{ end }}</td>
   </tr>
 </template>
 
