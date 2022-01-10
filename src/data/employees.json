@@ -1,0 +1,165 @@
+[
+  {
+    "date": "2022-01-04",
+    "records": [
+      {
+        "id": 1,
+        "firstName": "John",
+        "lastName": "Doe",
+        "role": "ADMIN",
+        "start": "09:02:38",
+        "end": "17:07:55"
+      },
+      {
+        "id": 2,
+        "firstName": "Jane",
+        "lastName": "Doe",
+        "role": "ADMIN",
+        "start": "08:54:12",
+        "end": "17:22:33"
+      },
+      {
+        "id": 3,
+        "firstName": "Mate",
+        "lastName": "Matic",
+        "role": "USER",
+        "start": "09:11:07",
+        "end": "17:01:45"
+      },
+      {
+        "id": 4,
+        "firstName": "Ivana",
+        "lastName": "Ivic",
+        "role": "USER",
+        "start": "08:15:24",
+        "end": "16:25:49"
+      },
+      {
+        "id": 5,
+        "firstName": "Ante",
+        "lastName": "Antic",
+        "role": "USER",
+        "start": "10:33:24",
+        "end": "17:15:16"
+      },
+      {
+        "id": 6,
+        "firstName": "Nikolina",
+        "lastName": "Nikic",
+        "role": "USER",
+        "start": "09:03:22",
+        "end": "14:27:42"
+      }
+    ]
+  },
+  {
+    "date": "2022-01-05",
+    "records": [
+      {
+        "id": 1,
+        "firstName": "John",
+        "lastName": "Doe",
+        "role": "ADMIN",
+        "start": "09:02:38",
+        "end": "17:07:55"
+      },
+      {
+        "id": 2,
+        "firstName": "Jane",
+        "lastName": "Doe",
+        "role": "ADMIN",
+        "start": "08:54:12",
+        "end": "17:22:33"
+      },
+      {
+        "id": 3,
+        "firstName": "Mate",
+        "lastName": "Matic",
+        "role": "USER",
+        "start": "09:11:07",
+        "end": "17:01:45"
+      },
+      {
+        "id": 4,
+        "firstName": "Ivana",
+        "lastName": "Ivic",
+        "role": "USER",
+        "start": "08:15:24",
+        "end": "16:25:49"
+      },
+      {
+        "id": 5,
+        "firstName": "Ante",
+        "lastName": "Antic",
+        "role": "USER",
+        "start": "10:33:24",
+        "end": "17:15:16"
+      },
+      {
+        "id": 6,
+        "firstName": "Nikolina",
+        "lastName": "Nikic",
+        "role": "USER",
+        "start": "09:03:22",
+        "end": "14:27:42"
+      }
+    ]
+  },
+  {
+    "date": "2022-01-06",
+    "records": []
+  },
+  {
+    "date": "2022-01-07",
+    "records": [
+      {
+        "id": 1,
+        "firstName": "John",
+        "lastName": "Doe",
+        "role": "ADMIN",
+        "start": "09:02:38",
+        "end": "17:07:55"
+      },
+      {
+        "id": 2,
+        "firstName": "Jane",
+        "lastName": "Doe",
+        "role": "ADMIN",
+        "start": "08:54:12",
+        "end": "17:22:33"
+      },
+      {
+        "id": 3,
+        "firstName": "Mate",
+        "lastName": "Matic",
+        "role": "USER",
+        "start": "09:11:07",
+        "end": "17:01:45"
+      },
+      {
+        "id": 4,
+        "firstName": "Ivana",
+        "lastName": "Ivic",
+        "role": "USER",
+        "start": "08:15:24",
+        "end": "16:25:49"
+      },
+      {
+        "id": 5,
+        "firstName": "Ante",
+        "lastName": "Antic",
+        "role": "USER",
+        "start": "10:33:24",
+        "end": "17:15:16"
+      },
+      {
+        "id": 6,
+        "firstName": "Nikolina",
+        "lastName": "Nikic",
+        "role": "USER",
+        "start": "09:03:22",
+        "end": "14:27:42"
+      }
+    ]
+  }
+]
