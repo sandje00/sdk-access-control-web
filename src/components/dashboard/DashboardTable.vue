@@ -2,22 +2,24 @@
   <h2 v-if="!records.length" class="message">
     There are no records to show.
   </h2>
-  <table v-else class="table">
-    <tr class="table-header">
-      <th
-        v-for="{label, id} in headerCols"
-        :key="id"
+  <div v-else class="container">
+    <table class="table">
+      <tr class="table-header">
+        <th
+          v-for="{ label, id } in headerCols"
+          :key="id"
+        >
+          {{ label }}
+        </th>
+      </tr>
+      <dashboard-table-record
+        v-for="record in records"
+        :key="record.id"
+        v-bind="record"
       >
-        {{ label }}
-      </th>
-    </tr>
-    <dashboard-table-record
-      v-for="record in records"
-      :key="record.id"
-      v-bind="record"
-    >
-    </dashboard-table-record>
-  </table>
+      </dashboard-table-record>
+    </table>
+  </div>
 </template>
 
 <script>
@@ -44,6 +46,10 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.container {
+  overflow-x: auto;
+}
+
 .table {
   width: 100%;
   text-align: left;
@@ -72,5 +78,12 @@ export default {
     color: var(--color-white);
     background-color: var(--color-primary);
   }
+
+  @media(max-width: 650px) {
+    th, tr th:first-child {
+      padding: 0.5rem;
+    }
+  }
+
 }
 </style>

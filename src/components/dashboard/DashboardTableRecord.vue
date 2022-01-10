@@ -58,4 +58,10 @@ tr td:last-child {
   border-top-right-radius: 5px;
   border-bottom-right-radius: 5px;
 }
+
+@media(max-width: 650px) {
+  td, tr td:first-child {
+    padding: 0.5rem;
+  }
+}
 </style>
