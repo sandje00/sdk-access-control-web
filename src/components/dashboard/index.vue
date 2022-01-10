@@ -1,11 +1,16 @@
 <template>
   <app-layout logged-in>
     <div class="dashboard">
-      <div class="dashboard-control flex-h justify-space-between">
+      <div
+        :class="[breakpoint
+          ? 'flex-v align-stretch'
+          : 'flex-h justify-space-between']"
+        class="dashboard-control">
         <date-picker v-model="date">
         </date-picker>
         <search-box
           v-model="keyword"
+          :class="{ 'vertical': breakpoint }"
           placeholder="Search"
         >
         </search-box>
@@ -33,6 +38,9 @@ export default {
   computed: {
     records() {
       return employeeData.find(it => it.date === this.mockDate).records;
+    },
+    breakpoint() {
+      return window.innerWidth <= 650;
     }
   },
   components: {
@@ -52,6 +60,10 @@ export default {
 
   &-control {
     padding: 2rem 0;
+  }
+
+  .vertical {
+    margin-top: 1rem;
   }
 }
 </style>
