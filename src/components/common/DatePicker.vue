@@ -18,8 +18,6 @@ export default {
 
 <style lang="scss" scoped>
 .date-picker {
-  width: 15rem;
-  height: 2rem;
   padding: 0.5rem;
   background-color: var(--color-white);
   border: none;

@@ -17,8 +17,6 @@ export default {
 
 <style lang="scss" scoped>
 .search-box {
-  width: 15rem;
-  height: 2rem;
   padding: 0.5rem;
   background-color: var(--color-white);
   border-radius: 10px;
