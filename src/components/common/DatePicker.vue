@@ -3,7 +3,8 @@
     @change="$emit('change', $event.target, value)"
     :value="value"
     v-bind="$attrs"
-    type="date">
+    type="date"
+    class="date-picker">
 </template>
 
 <script>
@@ -16,5 +17,12 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-
+.date-picker {
+  width: 15rem;
+  height: 2rem;
+  padding: 0.5rem;
+  background-color: var(--color-white);
+  border: none;
+  border-radius: 10px;
+}
 </style>
