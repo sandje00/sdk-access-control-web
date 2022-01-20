@@ -33,7 +33,7 @@ export default {
   background-color: var(--color-primary);
 
   .logo {
-    padding-left: 0.5rem;
+    padding-left: 2rem;
   }
 }
 </style>
