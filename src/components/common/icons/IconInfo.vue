@@ -9,7 +9,7 @@
 import BaseIcon from '../BaseIcon';
 
 export default {
-  name: 'icon-logout',
+  name: 'icon-info',
   props: {
     iconName: { type: String, required: true },
     width: { type: [Number, String], default: 24 },
