@@ -1,5 +1,12 @@
 <template>
   <nav class="navigation flex-h justify-center align-center">
+    <router-link :to="{ name: 'dashboard' }" class="navigation-link">
+      <div class="flex-h align-center">
+        <icon-dashboard icon-name="Dashboard" icon-color="#ffffff">
+        </icon-dashboard>
+        <span class="label">Dashboard</span>
+      </div>
+    </router-link>
     <router-link :to="{ name: 'profile' }" class="navigation-link">
       <div class="flex-h align-center">
         <icon-user icon-name="User" icon-color="#ffffff">
@@ -25,13 +32,19 @@
 </template>
 
 <script>
+import IconDashboard from '../icons/IconDashboard';
 import IconLogout from '../icons/IconLogout';
 import IconSettings from '../icons/IconSettings';
 import IconUser from '../icons/IconUser';
 
 export default {
   name: 'app-nav',
-  components: { IconLogout, IconSettings, IconUser }
+  components: {
+    IconDashboard,
+    IconLogout,
+    IconSettings,
+    IconUser
+  }
 }
 </script>
 
@@ -50,7 +63,7 @@ export default {
     .label {
       padding-left: 0.5rem;
 
-      @media(max-width: 600px) {
+      @media(max-width: 750px) {
         display: none;
       }
     }
