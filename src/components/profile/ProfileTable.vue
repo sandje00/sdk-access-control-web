@@ -12,12 +12,12 @@
           {{ label }}
         </th>
       </tr>
-      <dashboard-table-record
+      <profile-table-record
         v-for="record in records"
-        :key="record.id"
+        :key="record.date"
         v-bind="record"
       >
-      </dashboard-table-record>
+      </profile-table-record>
     </table>
   </div>
 </template>
@@ -60,42 +60,15 @@ export default {
     height: 3.5rem;
   }
 
-  th {
-    cursor: pointer;
-  }
-
   tr th:first-child {
     border-top-left-radius: 5px;
     border-bottom-left-radius: 5px;
     padding-left: 1rem;
-    cursor: default;
-    width: 5%;
   }
-
-  /* tr th:nth-child(2) {
-    width: 5%;
-  }
-
-  tr th:nth-child(3) {
-    width: 15%;
-  }
-
-  tr th:nth-child(4) {
-    width: 15%;
-  }
-
-  tr th:nth-child(5) {
-    width: 10%;
-  }
-
-  tr th:nth-child(6) {
-    width: 15%;
-  } */
 
   tr th:last-child{
     border-top-right-radius: 5px;
     border-bottom-right-radius: 5px;
-    width: 15%;
   }
 
   &-header {
