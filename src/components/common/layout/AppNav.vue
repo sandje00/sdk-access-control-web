@@ -12,8 +12,8 @@
       </div>
     </router-link>
     <router-link
-      :to="{ name: 'profile' }"
-      :class="{ 'active': pathName === 'profile' }"
+      :to="{ name: 'profile', params: { userId } }"
+      :class="{ 'active': pathName === 'profile' && paramUserId == userId }"
       class="navigation-link"
     >
       <div class="flex-h align-center">
@@ -54,9 +54,15 @@ import IconUser from '../icons/IconUser';
 
 export default {
   name: 'app-nav',
+  data: () => ({
+    userId: '1'
+  }),
   computed: {
     pathName() {
       return this.$route.name;
+    },
+    paramUserId() {
+      return this.$route.params.userId;
     }
   },
   components: {
