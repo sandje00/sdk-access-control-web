@@ -1,6 +1,6 @@
 <template>
   <header class="app-header flex-h justify-space-between">
-    <app-logo class="logo" :caption="false" :short="isMobile" light small vertical>
+    <app-logo class="logo" :caption="false" light small vertical>
     </app-logo>
     <app-nav></app-nav>
   </header>
