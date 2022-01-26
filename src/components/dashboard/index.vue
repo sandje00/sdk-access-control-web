@@ -11,7 +11,7 @@
         >
         </search-box>
       </div>
-      <dashboard-table :records="records">
+      <dashboard-table :records="visibleRecords">
       </dashboard-table>
     </div>
   </app-layout>
@@ -29,11 +29,25 @@ export default {
   data: () => ({
     mockDate: '2022-01-07',
     date: '',
-    keyword: ''
+    keyword: '',
+    records: []
   }),
   computed: {
-    records() {
-      return employeeData.find(it => it.date === this.mockDate).records;
+    visibleRecords() {
+      return this.keyword
+        ? this.filterRecords()
+        : this.records;
+    }
+  },
+  created() {
+    this.records = employeeData.find(it => it.date === this.mockDate).records;
+  },
+  methods: {
+    filterRecords() {
+      return this.records.filter(it =>
+        it.firstName.toUpperCase().includes(this.keyword.toUpperCase())
+          || it.lastName.toUpperCase().includes(this.keyword.toUpperCase())
+      );
     }
   },
   components: {
