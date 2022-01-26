@@ -1,27 +1,42 @@
 <template>
   <nav class="navigation flex-h justify-center align-center">
-    <router-link :to="{ name: 'dashboard' }" class="navigation-link">
+    <router-link
+      :to="{ name: 'dashboard' }"
+      :class="{ 'active': pathName === 'dashboard' }"
+      class="navigation-link"
+    >
       <div class="flex-h align-center">
         <icon-dashboard icon-name="Dashboard" icon-color="#ffffff">
         </icon-dashboard>
         <span class="label">Dashboard</span>
       </div>
     </router-link>
-    <router-link :to="{ name: 'profile' }" class="navigation-link">
+    <router-link
+      :to="{ name: 'profile' }"
+      :class="{ 'active': pathName === 'profile' }"
+      class="navigation-link"
+    >
       <div class="flex-h align-center">
         <icon-user icon-name="User" icon-color="#ffffff">
         </icon-user>
         <span class="label">My Profile</span>
       </div>
     </router-link>
-    <router-link :to="{ name: 'settings' }" class="navigation-link">
+    <router-link
+      :to="{ name: 'settings' }"
+      :class="{ 'active': pathName === 'settings' }"
+      class="navigation-link"
+    >
       <div class="flex-h align-center">
         <icon-settings icon-name="Settings" icon-color="#ffffff">
         </icon-settings>
         <span class="label">Settings</span>
       </div>
     </router-link>
-    <router-link :to="{ name: 'home' }" class="navigation-link">
+    <router-link
+      :to="{ name: 'home' }"
+      class="navigation-link"
+    >
       <div class="flex-h align-center">
         <icon-logout icon-name="Logout" icon-color="#ffffff">
         </icon-logout>
@@ -39,6 +54,11 @@ import IconUser from '../icons/IconUser';
 
 export default {
   name: 'app-nav',
+  computed: {
+    pathName() {
+      return this.$route.name;
+    }
+  },
   components: {
     IconDashboard,
     IconLogout,
@@ -66,6 +86,10 @@ export default {
       @media(max-width: 750px) {
         display: none;
       }
+    }
+
+    &.active {
+      border-bottom: 4px solid var(--color-white);
     }
   }
 }
