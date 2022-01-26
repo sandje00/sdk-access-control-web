@@ -1,7 +1,7 @@
 <template>
   <base-icon v-bind="$props">
-    <path d="M0 0h24v24H0z" fill="none"></path>
-    <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z"></path>
+    <path d="M0 0h24v24H0V0z" fill="none"></path>
+    <path d="M10 10.02h5V21h-5zM17 21h3c1.1 0 2-.9 2-2v-9h-5v11zm3-18H5c-1.1 0-2 .9-2 2v3h19V5c0-1.1-.9-2-2-2zM3 19c0 1.1.9 2 2 2h3V10H3v9z"></path>
   </base-icon>
 </template>
 
@@ -9,7 +9,7 @@
 import BaseIcon from '../BaseIcon';
 
 export default {
-  name: 'icon-info',
+  name: 'icon-dashboard',
   props: {
     iconName: { type: String, required: true },
     width: { type: [Number, String], default: 24 },
