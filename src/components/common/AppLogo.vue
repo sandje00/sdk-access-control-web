@@ -1,6 +1,6 @@
 <template>
   <div
-    :class="[{ caption, large, light, short, small, vertical }, vertical ? 'flex-h' : 'flex-v' ]"
+    :class="[{ caption, large, light, small, vertical }, vertical ? 'flex-h' : 'flex-v' ]"
     class="app-logo justify-center align-center"
   >
     <span>SDK</span>
@@ -15,7 +15,6 @@ export default {
     caption: { type: Boolean, default: true },
     large: { type: Boolean, default: false },
     light: { type: Boolean, default: false },
-    short: { type: Boolean, default: false },
     small: { type: Boolean, default: false },
     vertical: { type: Boolean, default: false }
   }
@@ -54,6 +53,10 @@ export default {
   &.vertical {
     span:last-child {
       margin-left: 0.5rem;
+
+      @media(max-width: 750px) {
+        display: none;
+      }
     }
   }
 
@@ -63,12 +66,6 @@ export default {
 
   &.small.caption::after {
     font-size: 0.7rem;
-  }
-
-  &.vertical.short {
-    span:last-child {
-      display: none;
-    }
   }
 }
 </style>
