@@ -1,12 +1,17 @@
 <template>
   <tr class="record">
     <td>
-      <icon-info
-        icon-name="Info"
-        icon-color="#5e1fde"
-        class="record-icon"
+      <button
+        class="record-button"
+        @click="$router.push({ name: 'profile', params: { userId: $props.id.toString() } })"
       >
-      </icon-info>
+        <icon-info
+          icon-name="Info"
+          icon-color="#5e1fde"
+          class="record-icon"
+        >
+        </icon-info>
+      </button>
     </td>
     <td>{{ id }}</td>
     <td>{{ firstName }}</td>
@@ -43,7 +48,9 @@ export default {
   border-bottom: 2px solid var(--color-secondary);
   background-color: var(--color-white);
 
-  &-icon {
+  &-button {
+    background: none;
+    border: none;
     cursor: pointer;
   }
 }
