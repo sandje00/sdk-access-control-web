@@ -9,10 +9,12 @@
       <dashboard-table :records="visibleRecords">
       </dashboard-table>
     </div>
+    <add-button class="add-user"></add-button>
   </app-layout>
 </template>
 
 <script>
+import AddButton from '../common/AddButton';
 import AppLayout from '../common/layout';
 import DashboardControl from './DashboardControl';
 import DashboardTable from './DashboardTable';
@@ -40,7 +42,12 @@ export default {
       );
     }
   },
-  components: { AppLayout, DashboardControl, DashboardTable }
+  components: {
+    AddButton,
+    AppLayout,
+    DashboardControl,
+    DashboardTable
+  }
 }
 </script>
 
@@ -52,5 +59,12 @@ export default {
   position: relative;
   left: 50%;
   transform: translateX(-50%);
+}
+
+.add-user {
+  position: absolute;
+  bottom: 5%;
+  right: 5%;
+  z-index: var(--z-add-button);
 }
 </style>
