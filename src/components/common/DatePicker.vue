@@ -1,6 +1,6 @@
 <template>
   <input
-    @change="$emit('change', $event.target, value)"
+    @input="$emit('input', $event.target.value)"
     :value="value"
     v-bind="$attrs"
     type="date"
