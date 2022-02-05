@@ -1,5 +1,6 @@
 <template>
   <base-button
+    v-on="$listeners"
     text="+"
     class="add-button"
   ></base-button>

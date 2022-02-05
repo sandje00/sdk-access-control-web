@@ -4,12 +4,18 @@
       <dashboard-control
         @date-change="loadRecords"
         @keyword-change="filterRecords"
-      >
-      </dashboard-control>
+      ></dashboard-control>
       <dashboard-table :records="visibleRecords">
       </dashboard-table>
     </div>
-    <add-button class="add-user"></add-button>
+    <add-button
+      @click="toggleModalOpen"
+      class="add-user"
+    ></add-button>
+    <user-modal
+      v-if="isModalOpen"
+      @close-modal="toggleModalOpen"
+    ></user-modal>
   </app-layout>
 </template>
 
@@ -20,12 +26,14 @@ import DashboardControl from './DashboardControl';
 import DashboardTable from './DashboardTable';
 import employeeData from '../../data/employees.json';
 import { getToday } from '../../utils/date';
+import UserModal from '../UserModal';
 
 export default {
   name: 'admin-dashboard',
   data: () => ({
     records: [],
-    visibleRecords: []
+    visibleRecords: [],
+    isModalOpen: false
   }),
   created() {
     this.loadRecords(getToday());
@@ -40,13 +48,17 @@ export default {
         it.firstName.toUpperCase().includes(keyword.toUpperCase())
           || it.lastName.toUpperCase().includes(keyword.toUpperCase())
       );
+    },
+    toggleModalOpen() {
+      this.isModalOpen = !this.isModalOpen;
     }
   },
   components: {
     AddButton,
     AppLayout,
     DashboardControl,
-    DashboardTable
+    DashboardTable,
+    UserModal
   }
 }
 </script>
