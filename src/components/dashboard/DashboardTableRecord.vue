@@ -1,8 +1,7 @@
 <template>
   <tr class="record">
     <td>
-      <button
-        class="record-button"
+      <button-icon
         @click="$router.push({ name: 'profile', params: { userId: $props.id.toString() } })"
       >
         <icon-info
@@ -11,7 +10,7 @@
           class="record-icon"
         >
         </icon-info>
-      </button>
+      </button-icon>
     </td>
     <td>{{ id }}</td>
     <td>{{ firstName }}</td>
@@ -23,6 +22,7 @@
 </template>
 
 <script>
+import ButtonIcon from '../common/ButtonIcon';
 import IconInfo from '../common/icons/IconInfo';
 
 export default {
@@ -39,7 +39,7 @@ export default {
     start: { type: String, required: true },
     end: { type: String, required: true }
   },
-  components: { IconInfo }
+  components: { ButtonIcon, IconInfo }
 }
 </script>
 
@@ -47,12 +47,6 @@ export default {
 .record {
   border-bottom: 2px solid var(--color-secondary);
   background-color: var(--color-white);
-
-  &-button {
-    background: none;
-    border: none;
-    cursor: pointer;
-  }
 }
 
 tr td:first-child {

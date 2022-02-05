@@ -1,7 +1,13 @@
 <template>
   <app-layout logged-in>
     <div class="profile">
-      <h1 class="profile-name">{{ fullName }}</h1>
+      <div class="flex-h align-center container">
+        <h1 class="profile-name">{{ fullName }}</h1>
+        <button-icon>
+          <icon-edit icon-name="Edit" icon-color="#996eee">
+          </icon-edit>
+        </button-icon>
+      </div>
       <profile-table :records="user.records">
       </profile-table>
     </div>
@@ -10,6 +16,8 @@
 
 <script>
 import AppLayout from '../common/layout';
+import ButtonIcon from '../common/ButtonIcon';
+import IconEdit from '../common/icons/IconEdit';
 import profileData from '../../data/profiles.json';
 import ProfileTable from './ProfileTable';
 
@@ -27,7 +35,7 @@ export default {
   created() {
     this.user = profileData.find(it => it.id == this.$props.userId);
   },
-  components: { AppLayout, ProfileTable }
+  components: { AppLayout, ButtonIcon, IconEdit, ProfileTable }
 }
 </script>
 
@@ -41,8 +49,12 @@ export default {
   transform: translateX(-50%);
 
   &-name {
-    padding: 1rem 0;
+    padding-right: 0.7rem;
     color: var(--color-primary);
+  }
+
+  .container {
+    padding: 1rem 0;
   }
 }
 </style>
