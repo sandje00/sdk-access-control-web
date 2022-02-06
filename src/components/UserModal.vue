@@ -2,43 +2,43 @@
   <div class="modal">
     <div @click="$emit('close-modal')" class="modal-overlay"></div>
     <div class="modal-content">
-      <h2 v-if="Object.keys($props.user).length === 0" class="modal-title">
-        Create user
+      <h2 v-if="isEditMode" class="modal-title">
+        Edit user
       </h2>
       <h2 v-else class="modal-title">
-        Edit user
+        Create user
       </h2>
       <base-form>
         <base-field
-          v-model="firstName"
+          v-model="userData.firstName"
           name="First name"
           :rules="{ required: true }"
           type="text"
           placeholder="First name"
         ></base-field>
         <base-field
-          v-model="lastName"
+          v-model="userData.lastName"
           name="Last name"
           :rules="{ required: true }"
           type="text"
           placeholder="Last name"
         ></base-field>
         <base-field
-          v-model.trim="email"
+          v-model.trim="userData.email"
           name="E-mail"
           :rules="{ required: true, email: true }"
           type="text"
           placeholder="E-mail"
         ></base-field>
         <base-field
-          v-model="role"
+          v-model="userData.role"
           name="Role"
           :rules="{ required: true }"
           type="text"
           placeholder="Role"
         ></base-field>
         <base-field
-          v-model="mac"
+          v-model="userData.mac"
           name="Mac address"
           :rules="{ required: true }"
           type="text"
@@ -57,19 +57,39 @@
 import BaseButton from './common/BaseButton';
 import BaseField from './common/BaseField';
 import BaseForm from './common/BaseForm';
+import pick from 'lodash/pick';
 
 export default {
   name: 'user-modal',
   props: {
-    user: { type: Object, default: () => ({}) }
+    id: { type: Number },
+    firstName: { type: String, default: '' },
+    lastName: { type: String, default: '' },
+    email: { type: String, default: '' },
+    role: {
+      type: String,
+      default: 'USER',
+      validator: val => ['USER', 'ADMIN'].includes(val)
+    },
+    mac: { type: String, default: '' }
   },
   data: () => ({
-    firstName: '',
-    lastName: '',
-    email: '',
-    role: '',
-    mac: ''
+    userData: {}
   }),
+  computed: {
+    isEditMode() {
+      return this.$props.id
+        && this.$props.firstName
+        && this.$props.lastName
+        && this.$props.email
+        && this.$props.mac;
+    }
+  },
+  created() {
+    const attributes = ['id', 'firstName', 'lastName',
+      'email', 'role', 'mac' ];
+    this.userData = pick(this.$props, attributes);
+  },
   components: { BaseButton, BaseField, BaseForm }
 }
 </script>

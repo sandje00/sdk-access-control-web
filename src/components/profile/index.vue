@@ -3,7 +3,7 @@
     <div class="profile">
       <div class="flex-h align-center container">
         <h1 class="profile-name">{{ fullName }}</h1>
-        <button-icon>
+        <button-icon @click="toggleModalOpen">
           <icon-edit icon-name="Edit" icon-color="#996eee">
           </icon-edit>
         </button-icon>
@@ -11,6 +11,11 @@
       <profile-table :records="user.records">
       </profile-table>
     </div>
+    <user-modal
+      v-if="isModalOpen"
+      v-bind="user"
+      @close-modal="toggleModalOpen"
+    ></user-modal>
   </app-layout>
 </template>
 
@@ -20,6 +25,7 @@ import ButtonIcon from '../common/ButtonIcon';
 import IconEdit from '../common/icons/IconEdit';
 import profileData from '../../data/profiles.json';
 import ProfileTable from './ProfileTable';
+import UserModal from '../UserModal';
 
 export default {
   name: 'user-profile',
@@ -27,15 +33,28 @@ export default {
     userId: { type: String, required: true }
   },
   data: () => ({
-    user: {}
+    user: {},
+    isModalOpen: false
   }),
   computed: {
     fullName() { return this.user.firstName + ' ' + this.user.lastName }
   },
   created() {
     this.user = profileData.find(it => it.id == this.$props.userId);
+    console.log(this.user)
   },
-  components: { AppLayout, ButtonIcon, IconEdit, ProfileTable }
+  methods: {
+    toggleModalOpen() {
+      this.isModalOpen = !this.isModalOpen;
+    }
+  },
+  components: {
+    AppLayout,
+    ButtonIcon,
+    IconEdit,
+    ProfileTable,
+    UserModal
+  }
 }
 </script>
 
