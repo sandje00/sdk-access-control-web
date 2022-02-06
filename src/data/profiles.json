@@ -3,7 +3,9 @@
     "id": 1,
     "firstName": "John",
     "lastName": "Doe",
+    "email": "john.doe@sdk.com",
     "role": "ADMIN",
+    "mac": "macaddr",
     "records": [
       {
         "date": "2022-01-04",
@@ -26,7 +28,9 @@
     "id": 2,
     "firstName": "Jane",
     "lastName": "Doe",
+    "email": "jane.doe@sdk.com",
     "role": "ADMIN",
+    "mac": "macaddr",
     "records": [
       {
         "date": "2022-01-04",
@@ -49,7 +53,9 @@
     "id": 3,
     "firstName": "Mate",
     "lastName": "Matic",
+    "email": "mate.matic@sdk.com",
     "role": "USER",
+    "mac": "macaddr",
     "records": [
       {
         "date": "2022-01-04",
@@ -72,7 +78,9 @@
     "id": 4,
     "firstName": "Ivana",
     "lastName": "Ivic",
+    "email": "ivana.ivic@sdk.com",
     "role": "USER",
+    "mac": "macaddr",
     "records": [
       {
         "date": "2022-01-04",
@@ -95,7 +103,9 @@
     "id": 5,
     "firstName": "Ante",
     "lastName": "Antic",
+    "email": "ante.antic@sdk.com",
     "role": "USER",
+    "mac": "macaddr",
     "records": [
       {
         "date": "2022-01-04",
@@ -118,7 +128,9 @@
     "id": 6,
     "firstName": "Nikolina",
     "lastName": "Nikic",
+    "email": "nikolina.nikic@sdk.com",
     "role": "USER",
+    "mac": "macaddr",
     "records": [
       {
         "date": "2022-01-04",

@@ -4,26 +4,36 @@
       <dashboard-control
         @date-change="loadRecords"
         @keyword-change="filterRecords"
-      >
-      </dashboard-control>
+      ></dashboard-control>
       <dashboard-table :records="visibleRecords">
       </dashboard-table>
     </div>
+    <add-button
+      @click="toggleModalOpen"
+      class="add-user"
+    ></add-button>
+    <user-modal
+      v-if="isModalOpen"
+      @close-modal="toggleModalOpen"
+    ></user-modal>
   </app-layout>
 </template>
 
 <script>
+import AddButton from '../common/AddButton';
 import AppLayout from '../common/layout';
 import DashboardControl from './DashboardControl';
 import DashboardTable from './DashboardTable';
 import employeeData from '../../data/employees.json';
 import { getToday } from '../../utils/date';
+import UserModal from '../UserModal';
 
 export default {
   name: 'admin-dashboard',
   data: () => ({
     records: [],
-    visibleRecords: []
+    visibleRecords: [],
+    isModalOpen: false
   }),
   created() {
     this.loadRecords(getToday());
@@ -38,9 +48,18 @@ export default {
         it.firstName.toUpperCase().includes(keyword.toUpperCase())
           || it.lastName.toUpperCase().includes(keyword.toUpperCase())
       );
+    },
+    toggleModalOpen() {
+      this.isModalOpen = !this.isModalOpen;
     }
   },
-  components: { AppLayout, DashboardControl, DashboardTable }
+  components: {
+    AddButton,
+    AppLayout,
+    DashboardControl,
+    DashboardTable,
+    UserModal
+  }
 }
 </script>
 
@@ -52,5 +71,12 @@ export default {
   position: relative;
   left: 50%;
   transform: translateX(-50%);
+}
+
+.add-user {
+  position: absolute;
+  bottom: 5%;
+  right: 5%;
+  z-index: var(--z-add-button);
 }
 </style>

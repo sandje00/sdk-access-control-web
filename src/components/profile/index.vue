@@ -1,17 +1,31 @@
 <template>
   <app-layout logged-in>
     <div class="profile">
-      <h1 class="profile-name">{{ fullName }}</h1>
+      <div class="flex-h align-center container">
+        <h1 class="profile-name">{{ fullName }}</h1>
+        <button-icon @click="toggleModalOpen">
+          <icon-edit icon-name="Edit" icon-color="#996eee">
+          </icon-edit>
+        </button-icon>
+      </div>
       <profile-table :records="user.records">
       </profile-table>
     </div>
+    <user-modal
+      v-if="isModalOpen"
+      v-bind="user"
+      @close-modal="toggleModalOpen"
+    ></user-modal>
   </app-layout>
 </template>
 
 <script>
 import AppLayout from '../common/layout';
+import ButtonIcon from '../common/ButtonIcon';
+import IconEdit from '../common/icons/IconEdit';
 import profileData from '../../data/profiles.json';
 import ProfileTable from './ProfileTable';
+import UserModal from '../UserModal';
 
 export default {
   name: 'user-profile',
@@ -19,15 +33,28 @@ export default {
     userId: { type: String, required: true }
   },
   data: () => ({
-    user: {}
+    user: {},
+    isModalOpen: false
   }),
   computed: {
     fullName() { return this.user.firstName + ' ' + this.user.lastName }
   },
   created() {
     this.user = profileData.find(it => it.id == this.$props.userId);
+    console.log(this.user)
   },
-  components: { AppLayout, ProfileTable }
+  methods: {
+    toggleModalOpen() {
+      this.isModalOpen = !this.isModalOpen;
+    }
+  },
+  components: {
+    AppLayout,
+    ButtonIcon,
+    IconEdit,
+    ProfileTable,
+    UserModal
+  }
 }
 </script>
 
@@ -41,8 +68,12 @@ export default {
   transform: translateX(-50%);
 
   &-name {
-    padding: 1rem 0;
+    padding-right: 0.7rem;
     color: var(--color-primary);
+  }
+
+  .container {
+    padding: 1rem 0;
   }
 }
 </style>

@@ -1,5 +1,5 @@
 <template>
-  <button v-on="$listeners" class="button">
+  <button v-on="$listeners" :class="{ neutral }" class="button">
     <span class="text">{{ text }}</span>
   </button>
 </template>
@@ -8,7 +8,8 @@
 export default {
   name: 'base-button',
   props: {
-    text: { type: String, required: true }
+    text: { type: String, required: true },
+    neutral: { type: Boolean, default: false }
   }
 };
 </script>
@@ -39,6 +40,14 @@ export default {
     background-color: var(--color-disabled-light);
     pointer-events: none;
     cursor: default;
+  }
+
+  &.neutral {
+    background-color: var(--color-gray-light);
+
+    .text {
+      color: var(--color-gray-dark);
+    }
   }
 }
 </style>
