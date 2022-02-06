@@ -2,12 +2,20 @@
   <div class="modal">
     <div @click="$emit('close-modal')" class="modal-overlay"></div>
     <div class="modal-content">
-      <h2 v-if="isEditMode" class="modal-title">
-        Edit user
-      </h2>
-      <h2 v-else class="modal-title">
-        Create user
-      </h2>
+      <div class="flex-h justify-space-between align-center">
+          <h2 v-if="isEditMode" class="modal-title">
+          Edit user
+        </h2>
+        <h2 v-else class="modal-title">
+          Create user
+        </h2>
+        <base-button
+          @click="$emit('close-modal')"
+          text="X"
+          class="modal-close"
+          neutral
+        ></base-button>
+      </div>
       <base-form>
         <base-field
           v-model="userData.firstName"
@@ -49,12 +57,6 @@
           class="align-self-center"
         ></base-button>
       </base-form>
-      <base-button
-        @click="$emit('close-modal')"
-        text="Cancel"
-        class="modal-cancel"
-        neutral
-      ></base-button>
     </div>
   </div>
 </template>
@@ -142,11 +144,9 @@ export default {
     color: var(--color-primary-light);
   }
 
-  &-cancel {
-    position: absolute;
-    left: 50%;
-    transform: translateX(-50%);
-    margin-top: 0.5rem;
+  &-close {
+    padding: 0.2rem 0.5rem;
+    font-weight: 700;
   }
 }
 </style>
