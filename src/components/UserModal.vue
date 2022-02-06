@@ -18,18 +18,11 @@
       </div>
       <base-form>
         <base-field
-          v-model="userData.firstName"
-          name="First name"
+          v-model="userData.name"
+          name="Name"
           :rules="{ required: true }"
           type="text"
           placeholder="First name"
-        ></base-field>
-        <base-field
-          v-model="userData.lastName"
-          name="Last name"
-          :rules="{ required: true }"
-          type="text"
-          placeholder="Last name"
         ></base-field>
         <base-field
           v-model.trim="userData.email"
@@ -71,8 +64,7 @@ export default {
   name: 'user-modal',
   props: {
     id: { type: Number },
-    firstName: { type: String, default: '' },
-    lastName: { type: String, default: '' },
+    name: { type: String, default: '' },
     email: { type: String, default: '' },
     role: {
       type: String,
@@ -87,15 +79,13 @@ export default {
   computed: {
     isEditMode() {
       return this.$props.id
-        && this.$props.firstName
-        && this.$props.lastName
+        && this.$props.name
         && this.$props.email
         && this.$props.mac;
     }
   },
   created() {
-    const attributes = ['id', 'firstName', 'lastName',
-      'email', 'role', 'mac' ];
+    const attributes = ['id', 'name', 'email', 'role', 'mac' ];
     this.userData = pick(this.$props, attributes);
   },
   components: { BaseButton, BaseField, BaseForm }

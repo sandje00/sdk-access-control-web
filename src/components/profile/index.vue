@@ -2,7 +2,7 @@
   <app-layout logged-in>
     <div class="profile">
       <div class="flex-h align-center container">
-        <h1 class="profile-name">{{ fullName }}</h1>
+        <h1 class="profile-name">{{ user.name }}</h1>
         <button-icon @click="toggleModalOpen">
           <icon-edit icon-name="Edit" icon-color="#996eee">
           </icon-edit>
@@ -36,9 +36,6 @@ export default {
     user: {},
     isModalOpen: false
   }),
-  computed: {
-    fullName() { return this.user.firstName + ' ' + this.user.lastName }
-  },
   created() {
     this.user = profileData.find(it => it.id == this.$props.userId);
     console.log(this.user)

@@ -34,8 +34,8 @@ export default {
     headerCols: [
       { label: '', id: 'info' },
       { label: 'ID', id: 'id' },
-      { label: 'First name', id: 'first_name' },
-      { label: 'Last name', id: 'last_name' },
+      { label: 'Name', id: 'name' },
+      { label: 'E-mail', id: 'email' },
       { label: 'Role', id: 'role' },
       { label: 'Start time', id: 'start_time' },
       { label: 'End time', id: 'end_time' }
