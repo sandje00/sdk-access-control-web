@@ -46,9 +46,15 @@
         ></base-field>
         <base-button
           text="Submit"
-          class=""
+          class="align-self-center"
         ></base-button>
       </base-form>
+      <base-button
+        @click="$emit('close-modal')"
+        text="Cancel"
+        class="modal-cancel"
+        neutral
+      ></base-button>
     </div>
   </div>
 </template>
@@ -134,6 +140,13 @@ export default {
 
   &-title {
     color: var(--color-primary-light);
+  }
+
+  &-cancel {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    margin-top: 0.5rem;
   }
 }
 </style>
