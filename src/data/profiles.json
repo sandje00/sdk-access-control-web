@@ -1,8 +1,7 @@
 [
   {
     "id": 1,
-    "firstName": "John",
-    "lastName": "Doe",
+    "name": "John Doe",
     "email": "john.doe@sdk.com",
     "role": "ADMIN",
     "mac": "macaddr",
@@ -26,8 +25,7 @@
   },
   {
     "id": 2,
-    "firstName": "Jane",
-    "lastName": "Doe",
+    "name": "Jane Doe",
     "email": "jane.doe@sdk.com",
     "role": "ADMIN",
     "mac": "macaddr",
@@ -51,8 +49,7 @@
   },
   {
     "id": 3,
-    "firstName": "Mate",
-    "lastName": "Matic",
+    "name": "Mate Matic",
     "email": "mate.matic@sdk.com",
     "role": "USER",
     "mac": "macaddr",
@@ -76,8 +73,7 @@
   },
   {
     "id": 4,
-    "firstName": "Ivana",
-    "lastName": "Ivic",
+    "name": "Ivana Ivic",
     "email": "ivana.ivic@sdk.com",
     "role": "USER",
     "mac": "macaddr",
@@ -101,8 +97,7 @@
   },
   {
     "id": 5,
-    "firstName": "Ante",
-    "lastName": "Antic",
+    "name": "Ante Antic",
     "email": "ante.antic@sdk.com",
     "role": "USER",
     "mac": "macaddr",
@@ -126,8 +121,7 @@
   },
   {
     "id": 6,
-    "firstName": "Nikolina",
-    "lastName": "Nikic",
+    "name": "Nikolina Nikic",
     "email": "nikolina.nikic@sdk.com",
     "role": "USER",
     "mac": "macaddr",
