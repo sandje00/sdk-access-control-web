@@ -16,7 +16,9 @@
           neutral
         ></base-button>
       </div>
-      <base-form>
+      <base-form
+        v-on="isEditMode ? { submit: editUser } : { submit: createUser }"
+      >
         <base-field
           v-model="userData.name"
           name="Name"
@@ -55,6 +57,7 @@
 </template>
 
 <script>
+import api from '../api/users';
 import BaseButton from './common/BaseButton';
 import BaseField from './common/BaseField';
 import BaseForm from './common/BaseForm';
@@ -87,6 +90,16 @@ export default {
   created() {
     const attributes = ['id', 'name', 'email', 'role', 'mac' ];
     this.userData = pick(this.$props, attributes);
+  },
+  methods: {
+    editUser() {
+      console.log('TODO :)');
+    },
+    createUser() {
+      api.createUser(this.userData)
+        .then(res => console.log(res))
+        .catch(err => console.log(err));
+    }
   },
   components: { BaseButton, BaseField, BaseForm }
 }
