@@ -53,6 +53,20 @@
         ></base-button>
       </base-form>
     </div>
+    <base-snackbar
+      v-if="success"
+      @close-snackbar="closeSnackbar"
+      :message="success"
+      class="message"
+      success
+    ></base-snackbar>
+    <base-snackbar
+      v-if="error"
+      @close-snackbar="closeSnackbar"
+      :message="error"
+      class="message"
+      error
+    ></base-snackbar>
   </div>
 </template>
 
@@ -61,6 +75,7 @@ import api from '../api/users';
 import BaseButton from './common/BaseButton';
 import BaseField from './common/BaseField';
 import BaseForm from './common/BaseForm';
+import BaseSnackbar from './common/BaseSnackbar';
 import pick from 'lodash/pick';
 
 export default {
@@ -77,7 +92,9 @@ export default {
     mac: { type: String, default: '' }
   },
   data: () => ({
-    userData: {}
+    userData: {},
+    success: '',
+    error: ''
   }),
   computed: {
     isEditMode() {
@@ -99,11 +116,15 @@ export default {
     },
     createUser() {
       api.createUser(this.userData)
-        .then(res => console.log(res))
-        .catch(err => console.log(err.response.data));
+        .then(res => { this.success = res.data.msg; })
+        .catch(err => { this.error = err.response.data.msg });
+    },
+    closeSnackbar() {
+      this.success = '';
+      this.error = '';
     }
   },
-  components: { BaseButton, BaseField, BaseForm }
+  components: { BaseButton, BaseField, BaseForm, BaseSnackbar }
 }
 </script>
 
@@ -152,6 +173,13 @@ export default {
   &-close {
     padding: 0.2rem 0.5rem;
     font-weight: 700;
+  }
+
+  .message {
+    position: fixed;
+    bottom: 5%;
+    left: 50%;
+    transform: translateX(-50%);
   }
 }
 </style>
