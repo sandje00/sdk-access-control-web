@@ -16,7 +16,9 @@
           neutral
         ></base-button>
       </div>
-      <base-form>
+      <base-form
+        v-on="isEditMode ? { submit: editUser } : { submit: createUser }"
+      >
         <base-field
           v-model="userData.name"
           name="Name"
@@ -51,19 +53,35 @@
         ></base-button>
       </base-form>
     </div>
+    <base-snackbar
+      v-if="success"
+      @close-snackbar="closeSnackbar"
+      :message="success"
+      class="message"
+      success
+    ></base-snackbar>
+    <base-snackbar
+      v-if="error"
+      @close-snackbar="closeSnackbar"
+      :message="error"
+      class="message"
+      error
+    ></base-snackbar>
   </div>
 </template>
 
 <script>
+import api from '../api/users';
 import BaseButton from './common/BaseButton';
 import BaseField from './common/BaseField';
 import BaseForm from './common/BaseForm';
+import BaseSnackbar from './common/BaseSnackbar';
 import pick from 'lodash/pick';
 
 export default {
   name: 'user-modal',
   props: {
-    id: { type: Number },
+    id: { type: String },
     name: { type: String, default: '' },
     email: { type: String, default: '' },
     role: {
@@ -74,7 +92,9 @@ export default {
     mac: { type: String, default: '' }
   },
   data: () => ({
-    userData: {}
+    userData: {},
+    success: '',
+    error: ''
   }),
   computed: {
     isEditMode() {
@@ -85,10 +105,33 @@ export default {
     }
   },
   created() {
-    const attributes = ['id', 'name', 'email', 'role', 'mac' ];
-    this.userData = pick(this.$props, attributes);
+    const attributes = pick(this, ['id', 'name', 'email', 'role', 'mac']);
+    this.userData = this.isEditMode
+      ? attributes
+      : { ...attributes, password: 'genericpass' };
   },
-  components: { BaseButton, BaseField, BaseForm }
+  methods: {
+    editUser() {
+      console.log('TODO :)');
+    },
+    createUser() {
+      api.createUser(this.userData)
+        .then(res => { this.success = res.data.msg; })
+        .catch(err => { this.error = err.response.data.msg });
+    },
+    closeSnackbar() {
+      if (!this.isEditMode && this.success) this.resetUserData();
+      if (this.success) this.success = '';
+      if (this.error) this.error = '';
+    },
+    resetUserData() {
+      Object.keys(this.userData).forEach(key => {
+        if (!this.isEditMode && key !== 'password' && key !== 'role')
+          this.userData[key] = '';
+      });
+    }
+  },
+  components: { BaseButton, BaseField, BaseForm, BaseSnackbar }
 }
 </script>
 
@@ -137,6 +180,13 @@ export default {
   &-close {
     padding: 0.2rem 0.5rem;
     font-weight: 700;
+  }
+
+  .message {
+    position: fixed;
+    bottom: 5%;
+    left: 50%;
+    transform: translateX(-50%);
   }
 }
 </style>
