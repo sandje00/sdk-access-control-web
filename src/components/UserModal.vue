@@ -88,8 +88,10 @@ export default {
     }
   },
   created() {
-    const attributes = ['id', 'name', 'email', 'role', 'mac' ];
-    this.userData = pick(this.$props, attributes);
+    const attributes = pick(this, ['id', 'name', 'email', 'role', 'mac']);
+    this.userData = this.isEditMode
+      ? attributes
+      : { ...attributes, password: 'genericpass' };
   },
   methods: {
     editUser() {
@@ -98,7 +100,7 @@ export default {
     createUser() {
       api.createUser(this.userData)
         .then(res => console.log(res))
-        .catch(err => console.log(err));
+        .catch(err => console.log(err.response.data));
     }
   },
   components: { BaseButton, BaseField, BaseForm }
