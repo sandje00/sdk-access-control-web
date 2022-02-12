@@ -1,5 +1,5 @@
 <template>
-  <app-layout :logged-in="false" centered-content>
+  <app-layout centered-content>
     <div class="login flex-v justify-center align-center align-items-stretch">
       <app-logo class="logo"></app-logo>
       <base-form @submit="login" class="login-form">

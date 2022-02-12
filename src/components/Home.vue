@@ -1,5 +1,5 @@
 <template>
-  <app-layout :logged-in="false" centered-content>
+  <app-layout centered-content>
     <app-logo large></app-logo>
       <base-button
         @click="getStarted"

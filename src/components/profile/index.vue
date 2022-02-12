@@ -1,5 +1,5 @@
 <template>
-  <app-layout logged-in>
+  <app-layout>
     <div class="profile">
       <div class="flex-h align-center container">
         <h1 class="profile-name">{{ user.name }}</h1>

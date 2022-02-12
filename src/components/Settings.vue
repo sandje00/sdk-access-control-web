@@ -1,5 +1,5 @@
 <template>
-  <app-layout logged-in></app-layout>
+  <app-layout></app-layout>
 </template>
 
 <script>
