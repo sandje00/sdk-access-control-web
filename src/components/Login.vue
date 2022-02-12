@@ -23,6 +23,13 @@
         ></base-button>
       </base-form>
     </div>
+    <base-snackbar
+      v-if="message"
+      @close-snackbar="closeSnackbar"
+      :message="message"
+      class="message"
+      error
+    ></base-snackbar>
   </app-layout>
 </template>
 
@@ -33,6 +40,7 @@ import AppLogo from './common/AppLogo';
 import BaseButton from './common/BaseButton';
 import BaseField from './common/BaseField';
 import BaseForm from './common/BaseForm';
+import BaseSnackbar from './common/BaseSnackbar';
 import pick from 'lodash/pick';
 
 export default {
@@ -48,10 +56,16 @@ export default {
       api
         .login(credentials)
         .then(res => {
+          if (this.message) this.closeSnackbar();
           localStorage.setItem('token', res.data);
           this.$router.push({ name: 'dashboard' });
         })
-        .catch(err => { this.message = err.response.data.error; });
+        .catch(err => {
+          this.message = err.response.data.msg;
+        });
+    },
+    closeSnackbar() {
+      this.message = '';
     }
   },
   components: {
@@ -59,7 +73,8 @@ export default {
     AppLogo,
     BaseButton,
     BaseField,
-    BaseForm
+    BaseForm,
+    BaseSnackbar
   }
 }
 </script>
@@ -85,5 +100,10 @@ export default {
       margin-top: 1rem;
     }
   }
+}
+
+.message {
+  position: fixed;
+  bottom: 5%;
 }
 </style>
