@@ -81,7 +81,7 @@ import pick from 'lodash/pick';
 export default {
   name: 'user-modal',
   props: {
-    id: { type: Number },
+    id: { type: String },
     name: { type: String, default: '' },
     email: { type: String, default: '' },
     role: {
@@ -120,8 +120,15 @@ export default {
         .catch(err => { this.error = err.response.data.msg });
     },
     closeSnackbar() {
-      this.success = '';
-      this.error = '';
+      if (!this.isEditMode && this.success) this.resetUserData();
+      if (this.success) this.success = '';
+      if (this.error) this.error = '';
+    },
+    resetUserData() {
+      Object.keys(this.userData).forEach(key => {
+        if (!this.isEditMode && key !== 'password' && key !== 'role')
+          this.userData[key] = '';
+      });
     }
   },
   components: { BaseButton, BaseField, BaseForm, BaseSnackbar }
