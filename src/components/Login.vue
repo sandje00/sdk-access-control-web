@@ -1,5 +1,5 @@
 <template>
-  <app-layout :logged-in="false" centered-content>
+  <app-layout centered-content>
     <div class="login flex-v justify-center align-center align-items-stretch">
       <app-logo class="logo"></app-logo>
       <base-form @submit="login" class="login-form">
@@ -23,31 +23,58 @@
         ></base-button>
       </base-form>
     </div>
+    <base-snackbar
+      v-if="message"
+      @close-snackbar="closeSnackbar"
+      :message="message"
+      class="message"
+      error
+    ></base-snackbar>
   </app-layout>
 </template>
 
 <script>
+import api from '../api/auth';
 import AppLayout from './common/layout';
 import AppLogo from './common/AppLogo';
 import BaseButton from './common/BaseButton';
 import BaseField from './common/BaseField';
 import BaseForm from './common/BaseForm';
+import BaseSnackbar from './common/BaseSnackbar';
+import pick from 'lodash/pick';
 
 export default {
   name: 'login-page',
   data: () => ({
     email: '',
-    password: ''
+    password: '',
+    message: ''
   }),
   methods: {
-    login() { this.$router.push({ name: 'dashboard' }) }
+    login() {
+      const credentials = pick(this, ['email', 'password']);
+      api
+        .login(credentials)
+        .then(res => {
+          if (this.message) this.closeSnackbar();
+          localStorage.setItem('token', res.data);
+          this.$router.push({ name: 'dashboard' });
+        })
+        .catch(err => {
+          this.message = err.response.data.msg;
+        });
+    },
+    closeSnackbar() {
+      this.message = '';
+    }
   },
   components: {
     AppLayout,
     AppLogo,
     BaseButton,
     BaseField,
-    BaseForm
+    BaseForm,
+    BaseSnackbar
   }
 }
 </script>
@@ -73,5 +100,10 @@ export default {
       margin-top: 1rem;
     }
   }
+}
+
+.message {
+  position: fixed;
+  bottom: 5%;
 }
 </style>
