@@ -2,7 +2,7 @@
   <div
     :class="{ 'flex-v justify-center align-center': centeredContent }"
     class="main">
-    <app-header v-if="loggedIn"></app-header>
+    <app-header v-if="isLoggedIn"></app-header>
     <slot></slot>
     <app-footer></app-footer>
   </div>
@@ -15,8 +15,12 @@ import AppHeader from './Header';
 export default {
   name: 'app-layout',
   props: {
-    centeredContent: { type: Boolean, default: false },
-    loggedIn: { type: Boolean, required: true }
+    centeredContent: { type: Boolean, default: false }
+  },
+  computed: {
+    isLoggedIn() {
+      return localStorage.getItem('token');
+    }
   },
   components: { AppFooter, AppHeader }
 }

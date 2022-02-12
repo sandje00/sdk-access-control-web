@@ -20,7 +20,7 @@
 export default {
   name: 'base-snackbar',
   props: {
-    message: { type: String, required:true },
+    message: { type: String, default: '' },
     info: { type: Boolean, default: true },
     success: { type: Boolean, default: false },
     error: { type: Boolean, default: false }
@@ -30,17 +30,20 @@ export default {
 
 <style lang="scss" scoped>
 .snackbar {
+  z-index: var(--z-snackbar);
   width: max-content;
   border-radius: 20px;
   text-align: center;
 
   .message {
+    z-index: var(--z=snackbar-message);
     display: inline-block;
     font-size: 1.2rem;
     padding: 1.2rem;
   }
 
   .close {
+    z-index: var(--z=snackbar-message);
     background: none;
     border: none;
     cursor: pointer;

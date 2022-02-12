@@ -1,5 +1,5 @@
 <template>
-  <app-layout logged-in>
+  <app-layout>
     <div class="dashboard">
       <dashboard-control
         @date-change="loadRecords"

@@ -33,16 +33,13 @@
         <span class="label">Settings</span>
       </div>
     </router-link>
-    <router-link
-      :to="{ name: 'home' }"
-      class="navigation-link"
-    >
+    <button @click="logout" class="logout">
       <div class="flex-h align-center">
         <icon-logout icon-name="Logout" icon-color="#ffffff">
         </icon-logout>
         <span class="label">Log Out</span>
       </div>
-    </router-link>
+    </button>
   </nav>
 </template>
 
@@ -65,6 +62,12 @@ export default {
       return this.$route.params.userId;
     }
   },
+  methods: {
+    logout() {
+      localStorage.removeItem('token');
+      this.$router.push({ name: 'home' });
+    }
+  },
   components: {
     IconDashboard,
     IconLogout,
@@ -75,6 +78,8 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+@import '@/assets/stylesheets/base/_typography';
+
 .navigation {
   &-link {
     padding: 1rem;
@@ -86,17 +91,32 @@ export default {
       background-color: var(--color-primary-dark);
     }
 
-    .label {
-      padding-left: 0.5rem;
-
-      @media(max-width: 750px) {
-        display: none;
-      }
-    }
-
     &.active {
       border-bottom: 4px solid var(--color-white);
     }
+  }
+}
+
+.logout {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: var(--color-white);
+  padding: 0 1rem;
+  font-family: $font-family-primary;
+  font-size: 0.95rem;
+
+  &:hover {
+    background-color: var(--color-primary-dark);
+    padding: 1rem;
+  }
+}
+
+.label {
+  padding-left: 0.5rem;
+
+  @media(max-width: 750px) {
+    display: none;
   }
 }
 </style>
