@@ -27,20 +27,32 @@
 </template>
 
 <script>
+import api from '../api/auth';
 import AppLayout from './common/layout';
 import AppLogo from './common/AppLogo';
 import BaseButton from './common/BaseButton';
 import BaseField from './common/BaseField';
 import BaseForm from './common/BaseForm';
+import pick from 'lodash/pick';
 
 export default {
   name: 'login-page',
   data: () => ({
     email: '',
-    password: ''
+    password: '',
+    message: ''
   }),
   methods: {
-    login() { this.$router.push({ name: 'dashboard' }) }
+    login() {
+      const credentials = pick(this, ['email', 'password']);
+      api
+        .login(credentials)
+        .then(res => {
+          localStorage.setItem('token', res.data);
+          this.$router.push({ name: 'dashboard' });
+        })
+        .catch(err => { this.message = err.response.data.error; });
+    }
   },
   components: {
     AppLayout,
