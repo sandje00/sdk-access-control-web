@@ -53,9 +53,8 @@ export default {
       this.visibleRecords = this.currentDayRecords;
     },
     filterRecords(keyword) {
-      this.visibleRecords = this.records.filter(it =>
-        it.firstName.toUpperCase().includes(keyword.toUpperCase())
-          || it.lastName.toUpperCase().includes(keyword.toUpperCase())
+      this.visibleRecords = this.currentDayRecords.filter(({ ...it }) =>
+        it[0].userName.toUpperCase().includes(keyword.toUpperCase())
       );
     },
     toggleModalOpen() {
