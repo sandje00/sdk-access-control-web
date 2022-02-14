@@ -40,9 +40,7 @@ export default {
     api.getAllWorkHours()
       .then(res => {
         this.records = res.data;
-        this.currentDayRecords = this.loadRecords(getToday());
-        this.visibleRecords = this.currentDayRecords;
-        console.log(this.currentDayRecords);
+        this.loadRecords(getToday());
       })
       .catch(err => {
         console.log(err.response.data.msg);
@@ -51,7 +49,8 @@ export default {
   methods: {
     loadRecords(date) {
       date = dateToDbFormat(date);
-      return this.records.find(it => it.date === date).users;
+      this.currentDayRecords =this.records.find(it => it.date === date).users;
+      this.visibleRecords = this.currentDayRecords;
     },
     filterRecords(keyword) {
       this.visibleRecords = this.records.filter(it =>
