@@ -1,8 +1,14 @@
 <template>
   <tr class="record">
     <td>{{ date }}</td>
-    <td>{{ start }}</td>
-    <td>{{ end }}</td>
+    <td>
+      <ul>
+        <li v-for="item, index in users[0].userWorkTime" :key="index">
+          Start time: {{ item.startTime }}; End time: {{ item.endTime }}
+        </li>
+      </ul>
+    </td>
+    <td>{{ users[0].fullTime }}</td>
   </tr>
 </template>
 
@@ -11,8 +17,7 @@ export default {
   name: 'profile-table-record',
   props: {
     date: { type: String, required: true },
-    start: { type: String, required: true },
-    end: { type: String, required: true }
+    users: { type: Array, default: () => ([]) }
   }
 }
 </script>

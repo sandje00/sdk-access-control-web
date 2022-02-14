@@ -2,43 +2,47 @@
   <app-layout>
     <div class="profile">
       <div class="flex-h align-center container">
-        <h1 class="profile-name">{{ user.name }}</h1>
+        <h1 class="profile-name">{{ userName }}</h1>
         <button-icon @click="toggleModalOpen">
           <icon-edit icon-name="Edit" icon-color="#996eee">
           </icon-edit>
         </button-icon>
       </div>
-      <profile-table :records="user.records">
+      <profile-table :records="userRecords">
       </profile-table>
     </div>
     <user-modal
       v-if="isModalOpen"
-      v-bind="user"
+      v-bind="userData"
       @close-modal="toggleModalOpen"
     ></user-modal>
   </app-layout>
 </template>
 
 <script>
+import api from '../../api/client';
 import AppLayout from '../common/layout';
 import ButtonIcon from '../common/ButtonIcon';
 import IconEdit from '../common/icons/IconEdit';
-import profileData from '../../data/profiles.json';
 import ProfileTable from './ProfileTable';
 import UserModal from '../UserModal';
 
 export default {
   name: 'user-profile',
   props: {
-    userId: { type: String, required: true }
+    userId: { type: String, required: true },
+    userName: { type: String, required: true }
   },
   data: () => ({
-    user: {},
+    userRecords: {},
     isModalOpen: false
   }),
   created() {
-    this.user = profileData.find(it => it.id == this.$props.userId);
-    console.log(this.user)
+    // This should be get method!!!
+    api.post('/userDates/', { id: this.$props.userId })
+      .then(res => {
+        this.userRecords = res.data;
+      })
   },
   methods: {
     toggleModalOpen() {
