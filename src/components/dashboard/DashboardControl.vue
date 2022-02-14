@@ -16,6 +16,7 @@
 
 <script>
 import DatePicker from '../common/DatePicker';
+import { getToday } from '../../utils/date';
 import SearchBox from '../common/SearchBox';
 
 export default {
@@ -24,6 +25,10 @@ export default {
     date: '',
     keyword: ''
   }),
+  created() {
+    this.date = getToday();
+    this.dateChange();
+  },
   methods: {
     dateChange() {
       this.$emit('date-change', this.date);

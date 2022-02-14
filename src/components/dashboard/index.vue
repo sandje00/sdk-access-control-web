@@ -20,28 +20,38 @@
 </template>
 
 <script>
+import { dateToDbFormat, getToday } from '../../utils/date';
 import AddButton from '../common/AddButton';
+import api from '../../api/workhours';
 import AppLayout from '../common/layout';
 import DashboardControl from './DashboardControl';
 import DashboardTable from './DashboardTable';
-import employeeData from '../../data/employees.json';
-import { getToday } from '../../utils/date';
 import UserModal from '../UserModal';
 
 export default {
   name: 'admin-dashboard',
   data: () => ({
     records: [],
+    currentDayRecords: [],
     visibleRecords: [],
     isModalOpen: false
   }),
   created() {
-    this.loadRecords(getToday());
+    api.getAllWorkHours()
+      .then(res => {
+        this.records = res.data;
+        this.currentDayRecords = this.loadRecords(getToday());
+        this.visibleRecords = this.currentDayRecords;
+        console.log(this.currentDayRecords);
+      })
+      .catch(err => {
+        console.log(err.response.data.msg);
+      });
   },
   methods: {
     loadRecords(date) {
-      this.records = employeeData.find(it => it.date === date).records;
-      this.visibleRecords = this.records;
+      date = dateToDbFormat(date);
+      return this.records.find(it => it.date === date).users;
     },
     filterRecords(keyword) {
       this.visibleRecords = this.records.filter(it =>

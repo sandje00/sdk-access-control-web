@@ -1,3 +1,9 @@
+export function dateToDbFormat(date) {
+  return date.split('-').reverse().join('/');
+}
+
+export function getToday() { return formatDate(new Date()); }
+
 function formatDate(date) {
   let d = new Date(date),
   month = '' + (d.getMonth() + 1),
@@ -11,5 +17,3 @@ function formatDate(date) {
 
   return [year, month, day].join('-');
 }
-
-export function getToday() { return formatDate(new Date()); }
