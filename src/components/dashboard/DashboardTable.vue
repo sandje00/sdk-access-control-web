@@ -33,12 +33,11 @@ export default {
   data: () => ({
     headerCols: [
       { label: '', id: 'info' },
-      { label: 'ID', id: 'id' },
       { label: 'Name', id: 'name' },
-      { label: 'E-mail', id: 'email' },
       { label: 'Role', id: 'role' },
-      { label: 'Start time', id: 'start_time' },
-      { label: 'End time', id: 'end_time' }
+      { label: 'User work time', id: 'user_work_time' },
+      { label: 'Current start time', id: 'current_start_time' },
+      { label: 'Full time', id: 'full_time' }
     ]
   }),
   components: { DashboardTableRecord }
@@ -77,19 +76,15 @@ export default {
   }
 
   tr th:nth-child(2) {
-    width: 5%;
+    width: 15%;
   }
 
   tr th:nth-child(3) {
-    width: 15%;
+    width: 10%;
   }
 
   tr th:nth-child(4) {
-    width: 15%;
-  }
-
-  tr th:nth-child(5) {
-    width: 10%;
+    width: 30%;
   }
 
   tr th:nth-child(6) {

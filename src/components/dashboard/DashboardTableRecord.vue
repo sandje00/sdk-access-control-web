@@ -2,7 +2,7 @@
   <tr class="record">
     <td>
       <button-icon
-        @click="$router.push({ name: 'profile', params: { userId: $props.id.toString() } })"
+        @click="$router.push({ name: 'profile', params: { userId } })"
       >
         <icon-info
           icon-name="Info"
@@ -12,12 +12,17 @@
         </icon-info>
       </button-icon>
     </td>
-    <td>{{ id }}</td>
-    <td>{{ name }}</td>
-    <td>{{ email }}</td>
-    <td>{{ role }}</td>
-    <td>{{ start }}</td>
-    <td>{{ end }}</td>
+    <td>{{ userName }}</td>
+    <td>{{ userRole }}</td>
+    <td>
+      <ul>
+        <li v-for="item, index in userWorkTime" :key="index">
+          Start time: {{ item.startTime }}; End time: {{ item.endTime }}
+        </li>
+      </ul>
+    </td>
+    <td>{{ currentStartTime }}</td>
+    <td>{{ fullTime }}</td>
   </tr>
 </template>
 
@@ -28,16 +33,16 @@ import IconInfo from '../common/icons/IconInfo';
 export default {
   name: 'dashboard-table-record',
   props: {
-    id: { type: Number, required: true },
-    name: { type: String, required: true },
-    email: { type: String, required: true },
-    role: {
+    userId: { type: String, required: true },
+    userName: { type: String, required: true },
+    userRole: {
       type: String,
       required: true,
       validator: val => ['USER', 'ADMIN'].includes(val)
     },
-    start: { type: String, required: true },
-    end: { type: String, required: true }
+    currentStartTime: { type: String, required: true },
+    fullTime: { type: String, required: true },
+    userWorkTime: { type: Array, default: () => ([]) }
   },
   components: { ButtonIcon, IconInfo }
 }
