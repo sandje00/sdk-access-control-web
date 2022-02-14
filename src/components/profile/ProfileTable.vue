@@ -14,7 +14,7 @@
       </tr>
       <profile-table-record
         v-for="record in records"
-        :key="record.date"
+        :key="record._id"
         v-bind="record"
       >
       </profile-table-record>
@@ -33,8 +33,8 @@ export default {
   data: () => ({
     headerCols: [
       { label: 'Date', id: 'date' },
-      { label: 'Start time', id: 'start_time' },
-      { label: 'End time', id: 'end_time' }
+      { label: 'User work time', id: 'user_work_time' },
+      { label: 'Full time', id: 'full_time' }
     ]
   }),
   components: { ProfileTableRecord }

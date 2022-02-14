@@ -2,7 +2,7 @@
   <tr class="record">
     <td>
       <button-icon
-        @click="$router.push({ name: 'profile', params: { userId } })"
+        @click="$router.push({ name: 'profile', params: { userId, userName } })"
       >
         <icon-info
           icon-name="Info"
